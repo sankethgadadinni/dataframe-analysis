@@ -34,9 +34,13 @@ def main():
                 
                 path = os.path.join(os.getcwd(), filepath.name)
                 
-                with open(filepath.name, 'r') as csvfile:
-                   writer = csv.writer(csvfile)
-                   writer.writerow('data.csv')
+                try:
+                    data = pd.read_csv(filepath)
+                    data.to_csv('data.csv', index=False)
+                except Exception as e:
+                    print(e)
+                    data = pd.read_excel(filepath)
+                    data.to_csv('data.csv', index=False)
                 
 #                 if path[:-3] == 'csv':
 #                     df = pd.read_csv(path)

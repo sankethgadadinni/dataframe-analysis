@@ -34,7 +34,7 @@ def main():
                 
                 path = os.path.join(os.getcwd(), filepath.name)
                 
-                with open(path, 'r') as csvfile:
+                with open(filepath.name, 'r') as csvfile:
                    writer = csv.writer(csvfile)
                    writer.writerow('data.csv')
                 

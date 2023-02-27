@@ -26,7 +26,7 @@ def main():
     
         openai.api_key = openai_key
 
-        filepath = st.file_uploader("Please Upload a CSV file", type = ['csv', "xlsx"])
+        filepath = st.file_uploader("Please Upload a CSV file", type = ['csv'])
 
         if filepath is not None:
             
@@ -34,16 +34,16 @@ def main():
                 
                 path = os.path.join(os.getcwd(), filepath.name)
                 
-                with open(path, "rb") as f:
-                    lines = f.readlines()
-                    csv.writer(lines)
+                with open(path, 'r') as csvfile:
+                   writer = csv.writer(csvfile)
+                   writer.writerow('data.csv')
                 
-                if path[:-3] == 'csv':
-                    df = pd.read_csv(path)
-                    df.to_csv("data.csv", index=False)
-                else:
-                    df = pd.read_excel(path, engine='openpyxl')
-                    df.to_excel("data.xlsx", index=False)
+#                 if path[:-3] == 'csv':
+#                     df = pd.read_csv(path)
+#                     df.to_csv("data.csv", index=False)
+#                 else:
+#                     df = pd.read_excel(path, engine='openpyxl')
+#                     df.to_excel("data.xlsx", index=False)
                 
                 st.header("Uploaded dataframe")
                 st.dataframe(df.head(5))
@@ -51,10 +51,10 @@ def main():
                 
                 if path[:-3] == 'csv':
                     full_path = os.path.join(os.getcwd(), "data.csv")
-                    df = pd.read_csv(path)
-                else:
-                    full_path = os.path.join(os.getcwd(), "data.xlsx")
-                    df = pd.read_excel(path, engine='openpyxl')
+                    df = pd.read_csv(full_path)
+#                 else:
+#                     full_path = os.path.join(os.getcwd(), "data.xlsx")
+#                     df = pd.read_excel(path, engine='openpyxl')
             
                 
                 results = [generate_analysis(x[0], x[1], df) for x in prompts_and_tasks]
@@ -87,7 +87,7 @@ def main():
                     
     
                 
-                os.remove(path)
+                os.remove(full_path)
                 
         else:
             st.write("Upload a valid CSV file")

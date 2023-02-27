@@ -16,9 +16,9 @@ def main():
     openai_key = st.text_input("Please Enter Your OpenAI key")
     
     prompts = ['Can you describe following dataframe', 'Can you generate industrial business outlook from the dataframe', 'Can you generate summary statistics from the dataframe',
-               'Can you give me the outliers in the dataframe', 'Can you give me the missing values in the dataframe', 'Can you generate industry KPI']
+               'Can you give me the outliers in the numerical columns of the dataframe', 'Can you give me the missing values in the dataframe']#, 'Can you generate industry KPI']
     
-    tasks = ['Description', 'Industry Business Outlook', 'Summary Statistics', 'Outliers', 'Missing Values', 'industry KPI']
+    tasks = ['Description', 'Industry Business Outlook', 'Summary Statistics', 'Outliers', 'Missing Values']#, 'industry KPI']
     
     prompts_and_tasks = zip(prompts, tasks)
     
@@ -86,8 +86,8 @@ def main():
                     st.title("Missing Values")
                     bullet_points(results[4])
                     
-                    st.title("Industry KPI")
-                    bullet_points(results[5])
+#                     st.title("Industry KPI")
+#                     bullet_points(results[5])
                     
     
                 

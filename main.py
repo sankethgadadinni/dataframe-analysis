@@ -45,8 +45,8 @@ def main():
 #                     df = pd.read_excel(path, engine='openpyxl')
 #                     df.to_excel("data.xlsx", index=False)
                 
-                st.header("Uploaded dataframe")
-                st.dataframe(df.head(5))
+#                 st.header("Uploaded dataframe")
+#                 st.dataframe(df.head(5))
                 
                 
                 if path[:-3] == 'csv':

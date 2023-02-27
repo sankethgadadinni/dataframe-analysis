@@ -56,6 +56,9 @@ def main():
 #                 if path[:-3] == 'csv':
                 full_path = os.path.join(os.getcwd(), "data.csv")
                 df = pd.read_csv(full_path)
+        
+                st.header("Uploaded dataframe")
+                st.dataframe(df.head(5))
 #                 else:
 #                     full_path = os.path.join(os.getcwd(), "data.xlsx")
 #                     df = pd.read_excel(path, engine='openpyxl')

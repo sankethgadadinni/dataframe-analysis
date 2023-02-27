@@ -34,6 +34,10 @@ def main():
                 
                 path = os.path.join(os.getcwd(), filepath.name)
                 
+                with open(path, "rb") as f:
+                    lines = f.readlines()
+                    csv.writer(lines)
+                
                 if path[:-3] == 'csv':
                     df = pd.read_csv(path)
                     df.to_csv("data.csv", index=False)
@@ -47,10 +51,10 @@ def main():
                 
                 if path[:-3] == 'csv':
                     full_path = os.path.join(os.getcwd(), "data.csv")
-                    df = pd.read_csv(full_path)
+                    df = pd.read_csv(path)
                 else:
                     full_path = os.path.join(os.getcwd(), "data.xlsx")
-                    df = pd.read_excel(full_path, engine='openpyxl')
+                    df = pd.read_excel(path, engine='openpyxl')
             
                 
                 results = [generate_analysis(x[0], x[1], df) for x in prompts_and_tasks]
@@ -83,7 +87,7 @@ def main():
                     
     
                 
-                os.remove(full_path)
+                os.remove(path)
                 
         else:
             st.write("Upload a valid CSV file")

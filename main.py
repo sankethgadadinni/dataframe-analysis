@@ -3,7 +3,7 @@ import csv
 import shutil
 import pandas as pd
 import streamlit as st
-from utils import generate_analysis, bullet_points
+from utils import generate_analysis, bullet_points, text_cleaning
 
 import openai
 
@@ -65,11 +65,14 @@ def main():
             
                 
                 results = [generate_analysis(x[0], x[1], df) for x in prompts_and_tasks]
+            
+                results = text_cleaning(results)
+
                 
                 
-                results = [result.split("\n") for result in results]
+#                 results = [result.split("\n") for result in results]
                 
-                results = [result[2:] for result in results]
+#                 results = [result[2:] for result in results]
                 
                 header = st.container()
 

@@ -16,9 +16,10 @@ def main():
     openai_key = st.text_input("Please Enter Your OpenAI key")
     
     prompts = ['Can you describe following dataframe', 'Can you generate industrial business outlook from the dataframe', 'Considering the dataframe what summary metrics can you provide',
-               'Can you identify any anomalies or outliers in above data', 'Check if there are any missing values in the dataframe', 'What are the most important KPIs in above data']
+               'Can you identify any anomalies or outliers in above data', 'Check if there are any missing values in the dataframe', 'What are the most important KPIs in above data',
+                'Can you give me value counts of all the categorical columns in above data']
     
-    tasks = ['Description', 'Industry Business Outlook', 'Summary Statistics', 'Outliers', 'Missing Values', 'industry KPI']
+    tasks = ['Description', 'Industry Business Outlook', 'Summary Statistics', 'Outliers', 'Missing Values', 'Industry KPI', 'Value Counts']
     
     prompts_and_tasks = zip(prompts, tasks)
     

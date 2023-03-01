@@ -18,7 +18,7 @@ def main():
     prompts = ['Can you describe following dataframe', 'Can you generate industrial business outlook from the dataframe', 'Considering the dataframe what summary metrics can you provide',
                'Give me the outliers in the numerical columns of the dataframe', 'Check if there are any missing values in the dataframe', 'What are the most important KPIs in above data']
     
-    tasks = ['Description', 'Industry Business Outlook', 'Summary Statistics', 'Outliers', 'Missing Values']#, 'industry KPI']
+    tasks = ['Description', 'Industry Business Outlook', 'Summary Statistics', 'Outliers', 'Missing Values', 'industry KPI']
     
     prompts_and_tasks = zip(prompts, tasks)
     
